@@ -19,7 +19,7 @@ var uri = process.env.uriDB
 const options = { useNewUrlParser: true, useUnifiedTopology: true }
 mongoose
   .connect(uri, options)
-  .then(() => app.listen(3002, console.log("Server is running")))
+  .then(() => app.listen(3002, console.log("Scrapper server is running")))
   .catch(error => {
     throw error
   })
@@ -31,7 +31,7 @@ const Tweet = mongoose.model('Tweet', tweetSchema);
 
 
 
-
+const twtscr=
 app.get('/scrapper', function(req, res) {
   let search = req.query.search;
   let stream = T.stream('statuses/filter', { track: search })
@@ -42,3 +42,5 @@ app.get('/scrapper', function(req, res) {
     console.log(obj);
   })
 });
+
+exports.scr

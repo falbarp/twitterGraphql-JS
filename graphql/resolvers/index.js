@@ -3,9 +3,9 @@ const Tweet = require("../../models/model")
 
 
 module.exports = {
-  tweets: async () => {
+  tweets: async ({limit=20, index=0}) => {
     try {
-      const tweetsFetched = await Tweet.find()
+      const tweetsFetched = await Tweet.find().limit(parseInt(limit)).skip(parseInt(index))
       return tweetsFetched.map(tweet => {
         return {
           ...tweet._doc,
@@ -39,7 +39,7 @@ module.exports = {
   findInText: async ({text}) => {
     try {
       const textquery = text
-      const regex = new RegExp(textquery, 'i') //Regular expression for case insensitive and icludes string
+      const regex = new RegExp(textquery, 'i') //Regular expression for case insensitive and includes string
       const tweetsFetched = await Tweet.find({text: {$regex: regex}})
       return tweetsFetched.map(tweet => {
         return {

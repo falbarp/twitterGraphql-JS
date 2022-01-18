@@ -4,6 +4,7 @@ module.exports = buildSchema(`
 
   type Tweet {
     _id: ID!
+    created_at: String
     text: String!
     source: String!
     lang: String
@@ -26,7 +27,7 @@ module.exports = buildSchema(`
  }
 
   type Query {
-    tweets:[Tweet!]
+    tweets(limit: Int, index: Int):[Tweet!]
     findByLanguage(lang: String):[Tweet]
     findByUserName(name: String):[Tweet]
     findInText(text: String):[Tweet]  }

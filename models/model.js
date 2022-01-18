@@ -4,6 +4,11 @@ const Schema = mongoose.Schema
 
 const tweetSchema = new Schema(
   {
+    created_at: {
+      type: String,
+      required: true,
+    },
+
     text: {
       type: String,
       required: true,
